@@ -58,9 +58,4 @@ public class UserController {
 				return ResponseEntity.ok().body(this.userservice.addmoney(user));
 			}
 			
-			@PutMapping("/user/deductmoney/{id}")
-			private ResponseEntity<user> deductmoney(@PathVariable long id,@RequestBody user user){
-				user.setUserid(id);
-				return ResponseEntity.ok().body(this.userservice.deductmoney(user));
-			}
 }

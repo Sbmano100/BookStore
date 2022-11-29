@@ -15,7 +15,7 @@ public class user {
 	private String username;
 	private String mailid;
 	private long contactno;
-	private int balance;
+	private double balance;
 	
 	
 	
@@ -49,10 +49,10 @@ public class user {
 	public void setContactno(long contactno) {
 		this.contactno = contactno;
 	}
-	public int getBalance() {
+	public double getBalance() {
 		return balance;
 	}
-	public void setBalance(int balance) {
+	public void setBalance(double balance) {
 		this.balance = balance;
 	}
 

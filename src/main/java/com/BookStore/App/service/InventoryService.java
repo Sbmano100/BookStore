@@ -11,4 +11,6 @@ public interface InventoryService {
 	inventory updateinventory(inventory inventory);
 	List<String> sortbylikes();
 	List<String> sortbydate();
+	void rentbook(long id);
+	
 }

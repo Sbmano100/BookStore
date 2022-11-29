@@ -10,28 +10,27 @@ import javax.persistence.Table;
 @Table(name="inventory")
 public class inventory {
 	@Id
-	private long inventoryid;
+	private long bookid;
 	private String bookname;
 	private String category;
 	private int availability;
 	private int unitprice;
 	private int likes;
 	private Date dateadded;
-@Override
+	
+	@Override
 	public String toString() {
-		return "inventory [inventoryid=" + inventoryid + ", bookname=" + bookname + ", category=" + category
-				+ ", availability=" + availability + ", unitprice=" + unitprice + ", likes=" + likes + ", dateadded="
-				+ dateadded + "]";
+		return "inventory [bookid=" + bookid + ", bookname=" + bookname + ", category=" + category + ", availability="
+				+ availability + ", unitprice=" + unitprice + ", likes=" + likes + ", dateadded=" + dateadded + "]";
 	}
-
-public long getInventoryid() {
-	return inventoryid;
-}
-
-public void setInventoryid(long inventoryid) {
-	this.inventoryid = inventoryid;
-}
-
+	
+	public long getBookid() {
+		return bookid;
+	}
+	public void setBookid(long bookid) {
+		this.bookid = bookid;
+	}
+	
 public String getBookname() {
 	return bookname;
 }

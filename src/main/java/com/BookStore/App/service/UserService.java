@@ -11,5 +11,5 @@ public interface UserService{
 	user getuserbyid(long id);
 	void deleteuser(long id);
 	user addmoney(user user);
-	user deductmoney(user user);
+	user deductmoney(long id,double price);
 }

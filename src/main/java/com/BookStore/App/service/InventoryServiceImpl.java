@@ -31,7 +31,7 @@ public class InventoryServiceImpl implements InventoryService{
 	
 	@Override
 	public inventory updateinventory(inventory inventory) {
-	Optional<inventory> invobj=this.inventoryrepo.findById(inventory.getInventoryid());
+	Optional<inventory> invobj=this.inventoryrepo.findById(inventory.getBookid());
 	if(invobj.isPresent()) {
 		inventory invupdate=invobj.get();
 		invupdate.setBookname(inventory.getBookname());
@@ -43,7 +43,7 @@ public class InventoryServiceImpl implements InventoryService{
 		return this.inventoryrepo.save(invupdate);
 	}
 	else {
-		 throw new InventoryException("Inventory didn't found with id" +inventory.getInventoryid());
+		 throw new InventoryException("Inventory didn't found with id" +inventory.getBookid());
 	}
 	}
 	
@@ -68,4 +68,15 @@ public class InventoryServiceImpl implements InventoryService{
 		}
 		return date;
 	}
+	
+	
+	
+	//rent the book
+	public void rentbook(long id) {
+		Optional<inventory> invobj=this.inventoryrepo.findById(id);
+		inventory inv=invobj.get();
+		int count=inv.getAvailability()-1;
+		inv.setAvailability(count);
+		inventoryrepo.save(inv);
+		}
 }

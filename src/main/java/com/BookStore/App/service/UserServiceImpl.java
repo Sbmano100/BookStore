@@ -80,15 +80,15 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public user deductmoney(user user) {
-		Optional<user> userobj=this.userrepo.findById(user.getUserid());
+	public user deductmoney(long id,double price) {
+		Optional<user> userobj=this.userrepo.findById(id);
 		if(userobj.isPresent()) {
 			user userupdate=userobj.get();
-			userupdate.setBalance(userupdate.getBalance()-user.getBalance());
+			userupdate.setBalance(userupdate.getBalance()-price);
 			return this.userrepo.save(userupdate);
 		}
 		else {
-			throw new UserException("user didn't find with id "+user.getUserid());
+			throw new UserException("user didn't find with id "+id);
 		}
 	}
 	

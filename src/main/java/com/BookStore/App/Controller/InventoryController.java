@@ -35,7 +35,7 @@ public class InventoryController {
 		 //updating book
 		 @PutMapping("/inventory/{id}")
 		 private ResponseEntity<inventory> updatebook(@PathVariable long id, @RequestBody inventory inventory){
-			 inventory.setInventoryid(id);
+			 inventory.setBookid(id);
 			 return ResponseEntity.ok().body(this.invservice.updateinventory(inventory));
 		 }
 		 
