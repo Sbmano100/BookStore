@@ -1,5 +1,6 @@
 package com.BookStore.App.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,5 +72,25 @@ public class OrdersServiceImpl {
 	
 	return this.ordrepo.save(order);
   }
+	
+	public void returnbook(long id) {
+		Optional<orders> orderdetails=this.ordrepo.findById(id);
+		if(!orderdetails.isPresent())
+			throw new UserException("There is no order placed on this id");
+		orders orderobj=orderdetails.get();
+		Optional<user> userdetails=this.urepo.findById(orderobj.getUserid());
+		Optional<book> bookdetails=this.brepo.findById(orderobj.getBookid());
+		Optional<inventory> invdetails=this.irepo.findById(orderobj.getBookid());
+		if(userdetails.isPresent()) {
+			user userobj=userdetails.get();
+			book bookobj=bookdetails.get();
+			inventory invobj=invdetails.get();
+			
+			userobj.setBalance(userobj.getBalance()+(bookobj.getPrice()*0.1));
+			invobj.setAvailability(invobj.getAvailability()+1);
+			orderobj.setStatus("Returned");
+			orderobj.setDateofReturn(LocalDate.now());
+			}
+	}
 }
 
